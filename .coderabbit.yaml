@@ -1,0 +1,25 @@
+version: 3
+reviews:
+  auto_review:
+    enabled: true
+    base_branches:
+      - main
+      - release-2084
+pre_merge_checks:
+  docstrings:
+    mode: off
+  title:
+    mode: off
+  description:
+    mode: off
+  issue_assessment:
+    mode: off
+  custom:
+    - name: Release ticket evidence
+      mode: error
+      instructions: >-
+        This check applies only when the pull request targets a branch whose name
+        starts with release-. For other target branches, pass the check and state
+        that the release requirement does not apply. For release targets, require
+        the text CCB-REV800 in the pull request description. Fail when that text is
+        absent and pass when it is present.
